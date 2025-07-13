@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: herojs-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/herojs.org.conf:/etc/nginx/conf.d/herojs.org.conf
+      - ./web/herojs-web:/web/herojs-web
+    networks:
+      - herojs-network
+
+networks:
+  herojs-network:
+    driver: bridge
